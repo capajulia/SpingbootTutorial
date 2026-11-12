@@ -1,0 +1,26 @@
+<!--
+    botó dret -> open in browser
+    no caldria q estigués dins del projecte, és una web d'exemple
+-->
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title id="main_title"></title>
+</head>
+<body>
+    <h1 id="message"></h1>
+    <p id="ip"></p>
+
+    <script>
+        fetch("http://localhost:8080/api/info", {method: 'GET',
+        headers: {"Accept": "application/json"}})
+            .then((response) => {return response.json();})
+            .then((jsondata) => {document.getElementById("main_title").innerText = jsondata.title;
+            document.getElementById("message").innerText = jsondata.message;
+            document.getElementById("ip").innerText = jsondata.ip;
+            })
+    </script>
+</body>
+</html>
